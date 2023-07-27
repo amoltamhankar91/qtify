@@ -5,16 +5,17 @@ import {ReactComponent as SearchIcon} from "../../assets/Search icon.svg";
 
 
 const Search = () => {
+  const onSubmitHandler=(e)=>{
+e.preventDefault();
+console.log("submitted");
+  }
   return (
-  <div className='wrapper'>
-    <input 
-    type="search"
-    placeholder="Search for album or song"
-    />
-    <button>
-      <SearchIcon />
-    </button>
-  </div>)
+    <form className={styles.searchContainer} onSubmit={onSubmitHandler}>
+
+    <input className={styles.search} type="search" placeholder="Search for album or song"/>
+    <button className={styles.searchButton} type="submit"> <SearchIcon /> </button>
+
+  </form>)
 }
 
 export default Search;

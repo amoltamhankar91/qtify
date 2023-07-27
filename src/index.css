@@ -19,18 +19,29 @@ html,body{
 body{
     font-family: 'Poppins',sans-serif;
     line-height: 1.5;
+    -webkit-font-smoothing:antialized;
     background-color: var(--color-black);
     color: var(--color-white);
     overflow-x: hidden;
 }
 
-img svg{
+img,picture,video,canvas,svg{
     display: block;
     max-width: 100%;
+}
+
+input,button,textarea,select{
+    font:inherit;
+}
+p,h1,h2,h3,h4,h5,h6{
+    overflow-wrap: break-word;
 }
 
 a,a:hover,a:active,a:focus{
     text-decoration: none;
     color:inherit;
 
+}
+#root,#_next{
+    isolation: isolate;
 }

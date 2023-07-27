@@ -1,15 +1,29 @@
-input{
-    width: 568px;
+.searchContainer{
     height: 48px;
-    font-size: 20px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
 }
-button{
-    height: 48px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+.search{
+    width: 502px;
+    height: 100%;
+    border-radius: 8px 0px 0px 8px;
+    border:1px solid black;
+    font-size: large;
+
 }
+
+.searchButton{
+    height: 100%;
+    width: 66px;
+    border-radius: 0px 8px 8px 0px;
+    border:1px solid black;
+    border-left: none;
+    cursor: pointer;
+
+}
+
 
 
 
