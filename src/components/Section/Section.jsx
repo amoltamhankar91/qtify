@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Section.module.css';
 import { CircularProgress,Box } from '@mui/material';
 import Card from "../Card/Card"
+import Carousel from '../Carousel/Carousel';
 
 const Section = ({title,data,type}) => {
+  const [toggle,setToggle]=useState(false); 
 
   const handleToggle=()=>{
-    console.log("Change text");
+    setToggle(!toggle);
   }
   return (<>
       <div className={styles.header}> 
       <h3>{title}</h3>
-      <h4 className={styles.toggleText} onClick={handleToggle}>Show All </h4>
+      <h4 className={styles.toggleText} onClick={handleToggle}>
+        
+        {!toggle?"Show All":"Collapse ALl"} 
+        </h4>
     </div>
 {
       data.length===0?(
@@ -20,11 +25,14 @@ const Section = ({title,data,type}) => {
         </Box>
       ):
       <div className={styles.cardsWrapper}>
-        <div className={styles.wrapper}>
+       {!toggle ?(<Carousel data={data} component={(data)=><Card data={data} type={type} />} />):
+       (<div className={styles.wrapper}>
         {data.map((item)=>(
         <Card data={item} type={type} />
       ))}
-        </div>
+        </div>)
+       
+        }
 
       </div>
       

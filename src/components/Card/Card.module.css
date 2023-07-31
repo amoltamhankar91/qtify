@@ -8,13 +8,15 @@ background-color: var(--color-white);
 display: flex;
 align-items: center;
 padding:6px;
-}
 
 .chip{
     color:var(--color-white);
     background-color: black;
     
 }
+}
+
+
 .wrapper{
 width: 160px;
 

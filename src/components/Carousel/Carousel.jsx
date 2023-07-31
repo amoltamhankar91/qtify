@@ -1,39 +1,41 @@
-import React, { useEffect } from 'react';
-import Swiper from 'swiper';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import LeftNavigation from './LeftNavigation/LeftNavigation';
-import RightNavigation from './RightNavigation/RightNavigation';
-import { SwiperSlide } from 'swiper/react';
+import React, { useEffect } from 'react'
+import styles from "./Carousel.module.css";
+import {Swiper,SwiperSlide, useSwiper} from 'swiper/react';
+import 'swiper/css';
+import {Navigation} from 'swiper/modules';
+import 'swiper/css/navigation';
+import LeftNavigation from "./LeftNavigation/LeftNavigation";
+import RightNavigation from "./RightNavigation/RightNavigation";
 
-
-const Carousel = (props) => {
-
-  const{data,renderComponent}=props;
-  
-  const Controls=(props)=>{
-    const {data}=props;
-    //const swiper=useSwiper();
+const Controls = ({data})=>{
+    
+  const swiper=useSwiper();
 
     useEffect(()=>{
-      //swiper.slideTo(0);
+        swiper.slideTo(0,1000);
     },[data]);
+}
 
-}   
+const Carousel = ({data,component}) => {
+  return (
+    <div className={styles.wrapper}>
 
-return (
-    <div>
-        <Swiper
-            modules={[Navigation]}
-            slidesPerView={"auto"}
-            spaceBetween={50}>
+    <Swiper style={{padding: "0px 20px"}} initialSlide={0} modules={[Navigation]} 
+    slidesPerView={"6"} spaceBetween={40} allowTouchMove >
 
-          <Controls data ={data} />
-          <LeftNavigation />
-          <RightNavigation />
-          <SwiperSlide>
-          </SwiperSlide>
+        <Controls data={data} />
+    
+       <LeftNavigation />
+       <RightNavigation /> 
+  
+        {data.map(item=>{
+          return(
+            <SwiperSlide>{component(item)}</SwiperSlide>
+          )
+        })}
+  
         </Swiper>
-
+    
     </div>
   )
 }
