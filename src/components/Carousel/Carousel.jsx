@@ -13,7 +13,7 @@ const Controls = ({data})=>{
 
     useEffect(()=>{
         swiper.slideTo(0,1000);
-    },[data]);
+    },[data,swiper]);
 }
 
 const Carousel = ({data,component}) => {
