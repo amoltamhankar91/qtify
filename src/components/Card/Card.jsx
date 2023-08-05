@@ -13,7 +13,7 @@ const Card = (props) => {
           <Tooltip title={`${songs.length} songs`} placement="top" arrow>
           <div className={styles.wrapper}>
             <div className={styles.card}>
-              <img  src={image} alt="album" loading="lazy" />
+              <img  src={image} alt="album" losading="lazy" />
               <div className={styles.followLikes}>
                 <Chip
                 label ={`${follows} Follows`}
@@ -27,6 +27,27 @@ const Card = (props) => {
             </div>
           </div>
           </Tooltip>
+        );
+      }
+     
+      case "songs" :{
+        const { image,title,likes } = data;
+        return (
+          <div className={styles.wrapper}>
+            <div className={styles.card}>
+              <img  src={image} alt="songs" losading="lazy" />
+              <div className={styles.followLikes}>
+                <Chip
+                label ={`${likes} likes`}
+                size="small"
+                className={styles.chip}
+                />
+              </div>
+            </div>
+            <div className={styles.title}>
+              <p>{title}</p>
+            </div>
+          </div>
         );
       }
       default:
